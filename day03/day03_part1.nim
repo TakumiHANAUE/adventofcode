@@ -54,7 +54,6 @@ proc extractPartNumber(buf: array[3, string]): seq[int] =
 ###############
 
 let inputFile = open("./day03_input.txt", fmRead)
-# let inputFile = open("./tmp.txt", fmRead)
 
 # get length of 1 line
 # insert '.' into first and last 
