@@ -7,7 +7,6 @@ type
         right: string
 
 let fileName = "day08_input.txt"
-# let fileName = "tmp.txt"
 let inputFile = open(fileName, fmRead)
 
 # read navigation
