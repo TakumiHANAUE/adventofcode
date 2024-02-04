@@ -1,0 +1,51 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "make new template files",
+            "type": "shell",
+            "command": "${workspaceFolder}/mktemplate.sh ${input:year} ${input:day}",
+            "problemMatcher": [],
+            "presentation": {
+                "echo": true,
+                "reveal": "silent",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": true,
+                "clear": false,
+            }
+        },
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "nim c ${file}",
+            "problemMatcher": [],
+            "options": {"cwd": "${fileDirname}"},
+        },
+        {
+            "label": "run",
+            "type": "shell",
+            "command": "nim c --run ${file}",
+            "problemMatcher": [],
+            "options": {"cwd": "${fileDirname}"},
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+    ],
+    "inputs": [
+        {
+            "id": "year",
+            "type": "promptString",
+            "description": "year"
+        },
+        {
+            "id": "day",
+            "type": "promptString",
+            "description": "day"
+        }
+    ]
+}
