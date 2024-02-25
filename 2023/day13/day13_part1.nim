@@ -46,7 +46,6 @@ proc analyzePattern(pattern: seq[string]): int =
         result += getLineNumber(linePos) * 100
     if findVerticalReflectionLine(pattern, linePos):
         result += getLineNumber(linePos)
-    echo "analyzePattern : ", result
 
 #######
 
