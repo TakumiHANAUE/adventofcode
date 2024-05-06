@@ -67,7 +67,7 @@ while frontier.len != 0:
         let newHeatLoss = currentInfo.heatLoss + getHeatLoss(next)
 
         # cannot move to reverse direction
-        if nextDir == oppositeDirection(currentInfo.direction):
+        if isOppositeDirection(currentInfo.direction, nextDir):
             continue
         # cannot move straight three block
         if nextDirectionNum > NUM_MAX:
