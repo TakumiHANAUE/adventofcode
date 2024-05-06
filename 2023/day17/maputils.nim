@@ -9,6 +9,7 @@ type
         RIGHT,
         BELOW,
         LEFT,
+        INVALID
 
 var x_max: int = 0
 var y_max: int = 0
@@ -84,13 +85,26 @@ proc getDirection*(pFrom, pTo: Position): Direction =
     if getDistance(pFrom, pTo) != 1:
         echo "getDirection : Invalid args ", pFrom, " ", pTo
 
-proc oppositeDirection*(d: Direction): Direction =
-    case d
+proc isOppositeDirection*(currentDir, nextDir: Direction): bool =
+    result = false
+    case currentDir
     of ABOVE:
-        result = BELOW
+        if nextDir == BELOW:
+            result = true
     of RIGHT:
-        result = LEFT
+        if nextDir == LEFT:
+            result = true
     of BELOW:
-        result = ABOVE
+        if nextDir == ABOVE:
+            result = true
     of LEFT:
-        result = RIGHT
+        if nextDir == RIGHT:
+            result = true
+    of INVALID:
+        discard
+
+proc isTurning*(currentDir, nextDir: Direction): bool =
+    result = false
+    if currentDir != nextDir:
+        if currentDir != INVALID:
+            result = true
